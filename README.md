@@ -23,24 +23,17 @@ The system is powered by four Prolog predicates:
 
 ## Example Usage 💡  
 ```prolog  
-?- assign_proctors(
-    [ta(s,tue), ta(h,mon), ta(m,thu), ta(a,sat)],
-    [quiz(csen403, sun, 5, 2), quiz(csen401, mon, 2, 3)],
-    [day(sat, [[], [s], [s], [s], []]),
-     day(sun, [[m, h], [], [s, m, h], [h], []]),
-     day(mon, [[h], [], [h], [h], []]),
-     day(tue, [[], [m], [m], [], [m]]),
-     day(wed, [[], [], [m], [m], []]),
-     day(thu, [[], [s], [s], [], []])],
-    ProctoringSchedule
-).  
+?- assign_quiz(quiz(csen403, sun, 5, 2), [day(sat, [[s, m], [m], [m], [m], [s, m]]), day(sun, [[s], [s, h, m], [], [s, m], [s, h, m]]), day(mon, [[s, m], [s, h, m], [s, m], [s, m], [s, h, m]]), day(tue, [[h, m], [h], [h], [h, m], [h]]), day(wed, [[s, h, m], [s, h, m], [s, h], [s, h], [s, h, m]]), day(thu, [[s, h], [h], [h], [s, h], [s, h]])], AssignedTAs).
 ```  
 **Output:**  
 ```prolog  
-ProctoringSchedule = [
-    proctors(quiz(csen403, sun, 5, 2), [s, h]),
-    proctors(quiz(csen401, mon, 2, 3), [m, a, h])
-];  
+AssignedTAs = [s, h] ;
+AssignedTAs = [h, s] ;
+AssignedTAs = [s, m] ;
+AssignedTAs = [m, s] ;
+AssignedTAs = [h, m] ;
+AssignedTAs = [m, h] ;
+false.
 ```  
 
 ## Why Prolog? 🤔  
